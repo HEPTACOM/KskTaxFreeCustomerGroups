@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace KskTaxFreeCustomerGroups;
 
@@ -12,15 +12,8 @@ use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Models\Attribute\CustomerGroup;
 use Shopware\Models\Customer\Customer;
 
-/**
- * Class KskTaxFreeCustomerGroups
- * @package KskTaxFreeCustomerGroups
- */
 class KskTaxFreeCustomerGroups extends Plugin
 {
-    /**
-     * @param InstallContext $context
-     */
     public function install(InstallContext $context)
     {
         /** @var ModelManager $em */
@@ -58,9 +51,6 @@ class KskTaxFreeCustomerGroups extends Plugin
         ];
     }
 
-    /**
-     * @param Enlight_Event_EventArgs $args
-     */
     public function filterUserData(Enlight_Event_EventArgs $args)
     {
         /** @var int $userId */
@@ -86,7 +76,7 @@ class KskTaxFreeCustomerGroups extends Plugin
             return;
         }
 
-        $userData['additional']['countryShipping']['taxfree'] = "1";
+        $userData['additional']['countryShipping']['taxfree'] = '1';
         $args->setReturn($userData);
     }
 }
